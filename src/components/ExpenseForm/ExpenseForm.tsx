@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './ExpenseForm.css';
 
 interface ExpenseFormProps {
   eurVal: number;
@@ -18,7 +19,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
 
   const handleAdd = () => {
     const errors: string[] = [];
-    if (inputTitle.length < 5) errors.push('Title should have at least 5 characters.');
+    if (inputTitle.length < 3) errors.push('Title should have at least 3 characters.');
     if (!inputPln || isNaN(Number(inputPln))) errors.push('Type a valid amount in PLN.');
 
     if (errors.length > 0) {
@@ -33,7 +34,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
   };
 
   return (
-    <div className="inputs">
+    <div className="inputs-form">
       <label>
         Type value: 1 EUR
         <input
@@ -58,7 +59,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
           onChange={(e) => setInputPln(e.target.value)}
         />
       </label>
-      <button onClick={handleAdd}>ADD</button>
+      <button onClick={handleAdd}>add</button>
     </div>
   );
 };

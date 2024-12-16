@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import ExpenseForm from './ExpenseForm';
-import ExpenseTable from './ExpenseTable';
+import ExpenseForm from './ExpenseForm/ExpenseForm';
+import ExpenseTable from './ExpenseTable/ExpenseTable';
 
-interface Expense {
+export interface Expense {
   id: number;
   title: string;
   amountPLN: number;
   amountEUR: number;
+  checked: boolean;
 }
 
 const List: React.FC = () => {
@@ -20,6 +21,7 @@ const List: React.FC = () => {
       title,
       amountPLN,
       amountEUR: parseFloat((amountPLN / eurVal).toFixed(2)),
+      checked: false
     };
     setExpenses((prev) => [...prev, newExpense]);
   };
@@ -28,11 +30,20 @@ const List: React.FC = () => {
     setExpenses((prev) => prev.filter((expense) => expense.id !== id));
   };
 
-  const totalPLN = expenses.reduce((sum, exp) => sum + exp.amountPLN, 0).toFixed(2);
-  const totalEUR = expenses.reduce((sum, exp) => sum + exp.amountEUR, 0).toFixed(2);
+  const saveEditedExpense = (id: number, title: string, amountPLN: number) => {
+    setExpenses((prev) =>
+      prev.map((expense) => (expense.id === id ? { ...expense, title, amountPLN, amountEUR: parseFloat((amountPLN / eurVal).toFixed(2)) } : expense))
+    );
+  };
+
+  const expenseChecked = (id: number, checked: boolean) => () => {
+    setExpenses((prev) =>
+      prev.map((expense) => (expense.id === id ? { ...expense, checked: checked } : expense))
+    );
+  }
 
   return (
-    <div>
+    <div className="app">
       <h1>List of Expenses</h1>
       <ExpenseForm
         eurVal={eurVal}
@@ -41,8 +52,7 @@ const List: React.FC = () => {
         setErrorMessage={setErrorMessage}
       />
       {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-      <ExpenseTable expenses={expenses} deleteExpense={deleteExpense} />
-      <h2>Sum: {totalPLN} PLN / {totalEUR} EUR</h2>
+      <ExpenseTable expenses={expenses} deleteExpense={deleteExpense} saveEditedExpense={saveEditedExpense} expenseChecked={expenseChecked} />
     </div>
   );
 };

@@ -8,20 +8,16 @@
 }
 
 body {
-display:flex;
-justify-content: center;
-background: url('./assets/bg-geo.jpg');
-background-repeat: repeat;
+  background: url('./assets/bg-geo.jpg');
+  background-repeat: repeat;
 }
 
-.inputs{
-display:flex;
-justify-content: center;
-flex-direction:column;
-}
-
-label{
-font-size:24px;
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 h1 {
@@ -30,62 +26,39 @@ h1 {
   color: orangered;
 }
 
-h2 {
-  line-height: 200%; }
-
 input {
-  padding: 8px 12px;
-  border: none;
-  box-shadow: 0px 0px 10px 0px #797979;
-  font-size: 22px;
-  margin: 0 10px 10px 20px;;
-  border-radius: 5%; 
-  
+  padding: 6px 10px;
+  border: 1px solid silver;
+  border-radius: 4px;
+  max-width: 100%;
 }
 
 button {
   border: 0px;
-  padding: 10px 15px;
-  background: #b8e748;
+  padding: 6px 12px;
+  background: #b6df56;
   color: white;
-  box-shadow: 0px 0px 15px 0px #797979;
-  font-size: 24px;
   cursor: pointer;
-border-radius: 5%; }
-
-button.deleteButton{
-  font-size:18px;
-  padding: 5px 10px;
+  border-radius: 4px; 
 }
 
 button:hover{
-  background: #c0ee56;
+  background: #b6df56;
+  box-shadow: 0px 0px 6px 0px #797979;
 }
 
-.tableHeader{
-  display: flex;
-  flex-direction: row;
-  padding:10px 5px;
-  color: white;
-  background: #0ab83e;
-  margin-top:10px;
-}
-
-.rows {
-  display: flex;
-  flex-direction: row;
-  padding:5px;
-  border-bottom: 1px solid silver;
-}
 .title{
-  min-width:200px;
+  width: 220px;
 }
 .amountPLN, .amountPLNHead {
-  min-width:160px;
+  width:160px;
 }
 .amountEUR, .amountEURHead {
-  min-width:160px;
+  width:160px;
 }
 .optionCell {
-  min-width:100px;
+  width:100px;
+}
+.checkbox {
+  width: 30px;
 }

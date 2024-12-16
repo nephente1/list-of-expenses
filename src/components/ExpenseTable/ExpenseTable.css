@@ -1,0 +1,23 @@
+.table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tableHeader{
+  display: flex;
+  padding: 6px 10px;
+  color: white;
+  background: #0ab83e;
+  text-align: left;
+  gap: 10px;
+  border-radius: 4px;
+}
+
+.total-sum {
+  text-align: right;
+  font-weight: bold;
+  margin: 10px 0 0;
+  letter-spacing: 1px;
+  font-size: 22px;
+}

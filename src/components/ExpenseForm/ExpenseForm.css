@@ -1,0 +1,14 @@
+.inputs-form {
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  & button {
+    padding: 10px 20px;
+    text-transform: uppercase;
+  }
+}
+
+label > input {
+  margin-left: 10px;
+}
